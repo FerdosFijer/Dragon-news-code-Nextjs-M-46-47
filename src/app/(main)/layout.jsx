@@ -4,11 +4,11 @@ import React from "react";
 
 const MainLayout = ({children}) => {
   return (
-    <div>
+    <>
       <Header />
       <Navbar />
       {children}
-    </div>
+    </>
   );
 };
 
