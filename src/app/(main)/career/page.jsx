@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "Careers | NewsPulse",
+  title: "Dragon News | Career ",
   description:
     "Join NewsPulse and help shape the future of digital journalism.",
 };

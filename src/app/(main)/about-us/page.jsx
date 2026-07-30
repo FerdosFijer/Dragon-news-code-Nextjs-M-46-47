@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "About Us | NewsPulse",
+  title: "Dragon News | About Us ",
   description: "Learn more about NewsPulse, our mission, vision, and editorial values.",
 };
 
