@@ -7,12 +7,9 @@ const LoginPage = () => {
 
   //! react hook approach from react hook website
   const { register, handleSubmit, formState: { errors }} = useForm();
+//   console.log(errors);
 
-  console.log(errors);
-  
-
-  const handleLoginFunc = (data) => {console.log(data ,"I have data");
-  }
+  const handleLoginFunc = (data) => {console.log(data ,"I have data");}
 
   //! Nicher apporach e korbo na tai niche comment kore raksi and return er vitor name field gulo comment kore raksi and react hook er approach ta diye kortesi upore
   /* const handleLoginFunc = (e) => {
