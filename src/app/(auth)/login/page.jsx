@@ -1,4 +1,5 @@
 "use client";
+import { authClient } from "@/lib/auth-client";
 import Link from "next/link";
 import React from "react";
 import { useForm } from "react-hook-form";
@@ -9,7 +10,16 @@ const LoginPage = () => {
   const { register, handleSubmit, formState: { errors }} = useForm();
 //   console.log(errors);
 
-  const handleLoginFunc = (data) => {console.log(data ,"I have data");}
+  const handleLoginFunc = async (data) => {/* console.log(data ,"I have data"); */
+
+        const { data:res, error } = await authClient.signIn.email({
+        email: data.email, 
+        password: data.password,
+        rememberMe: true,
+        callbackURL: "/",
+        });
+        console.log(res,error);
+  }
 
   //! Nicher apporach e korbo na tai niche comment kore raksi and return er vitor name field gulo comment kore raksi and react hook er approach ta diye kortesi upore
   /* const handleLoginFunc = (e) => {
