@@ -4,7 +4,7 @@ import React from "react";
 const LeftSidebar = ({categories, active_id}) => {
   return (
     <div >
-      <h2 className="font-bold text-lg mb-4 bg-gray-200">All Categories</h2>
+      <h2 className="font-bold text-lg mb-4 ">All Categories</h2>
       <ul className="flex flex-col  gap-3 mt-6 ">
         {categories.map((category) => (
             <li
