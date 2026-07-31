@@ -1,14 +1,15 @@
 "use client";
 import { authClient } from "@/lib/auth-client";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const LoginPage = () => {
 
   //! react hook approach from react hook website
   const { register, handleSubmit, formState: { errors }} = useForm();
-//   console.log(errors);
+  //  console.log(errors);
 
   const handleLoginFunc = async (data) => {/* console.log(data ,"I have data"); */
 
@@ -20,6 +21,8 @@ const LoginPage = () => {
         });
         console.log(res,error);
   }
+
+   const [isShowPassword, setIsShowpassword] = useState(false)
 
   //! Nicher apporach e korbo na tai niche comment kore raksi and return er vitor name field gulo comment kore raksi and react hook er approach ta diye kortesi upore
   /* const handleLoginFunc = (e) => {
@@ -47,15 +50,16 @@ const LoginPage = () => {
             />
             {errors.email && <p className="text-red-500"> Email field is required</p>}
           </fieldset>
-          <fieldset className="fieldset">
+          <fieldset className="fieldset relative">
             <legend className="fieldset-legend"> Password </legend>
             <input
             //   name="password"
-              type="password"
+              type={isShowPassword ? "" : "password"}
               className="input"
               placeholder="Type your password"
               {...register("password", { required: "password field is required" })}
             />
+            <span className="absolute right-2 top-4 cursor-pointer" onClick={() => setIsShowpassword(!isShowPassword)}> {isShowPassword ? <FaEye className="text-lg"/>: <FaEyeSlash className="text-lg"/>}</span>
             {errors.password && <p className="text-red-500"> {errors.password.message}</p>}
           </fieldset>
           <button className="btn w-full bg-slate-700 text-white mt-2">
