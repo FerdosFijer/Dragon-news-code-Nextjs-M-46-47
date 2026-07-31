@@ -1,16 +1,18 @@
 "use client";
 
 import Image from 'next/image';
-import React from 'react';
 import userAvatar from '@/assets/user.png'
 import NavLink from './NavLink';
 import { authClient } from '@/lib/auth-client';
+import { useRouter } from "next/navigation";
 
 
 const Navbar = () => {
     const { data: session, isPending } = authClient.useSession();
     const user = session?.user;
     console.log(user, "sessionnnn");
+
+    const router = useRouter();
 
     return (
         <div className='container mx-auto flex justify-between mt-6'>
@@ -25,12 +27,15 @@ const Navbar = () => {
                 <div className='flex justify-center items-center gap-1'>
                         <h2>Hello, {user?.name}</h2>
                         <Image className='rounded-full' src={user?.image || userAvatar} width={40} height={40} alt='userAvatar'></Image>
-                        <button className='btn bg-purple-500 text-white' onClick={async() => await authClient.signOut()}> Logout</button>
+                        <button className='btn bg-purple-500 text-white' onClick={async() => { await authClient.signOut(); router.push("/")}}> Logout</button>
                 </div>
                 ) : (
+                    <div className='flex justify-center items-center gap-1'>
+                    <Image className='rounded-full' src={ userAvatar} width={40} height={40} alt='userAvatar'></Image>
                     <button className='btn bg-purple-500 text-white' >
                     <NavLink href={"/login"}>Login</NavLink>
-                </button>
+                  </button>
+                    </div>
                 )
             }
         </div>
