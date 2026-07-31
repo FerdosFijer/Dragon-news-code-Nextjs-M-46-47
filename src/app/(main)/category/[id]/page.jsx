@@ -22,7 +22,7 @@ const NewsCatagoryPage = async ({params}) => {
       </div>
 
       <div className=" col-span-6">
-        <h2 className='font-bold text-lg'> News by category</h2>
+        <h2 className='font-bold text-lg  '> News by category</h2>
         <div className="space-y-4 mt-6">
           {
           news.length >0 ? news.map((n, ind) => {
