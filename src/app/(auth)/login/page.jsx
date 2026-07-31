@@ -3,7 +3,7 @@ import { authClient } from "@/lib/auth-client";
 import Link from "next/link";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { FaEye, FaEyeSlash, FaGithub, FaGoogle } from "react-icons/fa";
 
 const LoginPage = () => {
 
@@ -23,6 +23,15 @@ const LoginPage = () => {
   }
 
    const [isShowPassword, setIsShowpassword] = useState(false)
+
+    const handleGoogleSignin = async () => {
+       const data = await authClient.signIn.social({
+           provider: "google",
+       }); };
+       const handleGithubSignin = async () => {
+       const data = await authClient.signIn.social({
+           provider: "github",
+       }); };
 
   //! Nicher apporach e korbo na tai niche comment kore raksi and return er vitor name field gulo comment kore raksi and react hook er approach ta diye kortesi upore
   /* const handleLoginFunc = (e) => {
@@ -73,7 +82,20 @@ const LoginPage = () => {
             SignUp here
           </Link>
         </p>
+
+        <div className='flex flex-col w-full gap-2 pt-10'>
+                      <button className='btn border-blue-500 text-blue-500' onClick={handleGoogleSignin}>
+                          <FaGoogle />
+                          <h3>Login with Google</h3>
+                      </button>
+                      <button className='btn' onClick={handleGithubSignin}>
+                          <FaGithub />
+                          <h3>Login with Github</h3>
+                      </button>
       </div>
+      </div>
+
+      
     </div>
   );
 };
